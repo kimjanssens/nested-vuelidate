@@ -1,17 +1,19 @@
 <template>
-	<main>
-		<pre>{{ formData }}</pre>
+	<main class="container mx-auto">
+		<div class="grid grid-cols-2 gap-8">
+			<pre>{{ formData }}</pre>
 
-		<div>
-			<form novalidate @submit.prevent="handleSubmit">
-				<Person
-					v-for="(person, i) in formData.people"
-					:key="i"
-					:person="person"
-				/>
+			<div class="bg-gray-100 p-8 rounded-lg">
+				<form novalidate @submit.prevent="handleSubmit">
+					<Person
+						v-for="(person, i) in formData.people"
+						:key="i"
+						:person="person"
+					/>
 
-				<button type="submit">Submit</button>
-			</form>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
 		</div>
 	</main>
 </template>

@@ -1,15 +1,21 @@
 <template>
-	<div>
-		<div :class="{ error: v$.firstName.$errors.length }">
-			<input v-model="person.firstName" type="text" />
+	<div class="flex items-center gap-4">
+		<div
+			class="flex flex-col gap-2"
+			:class="{ error: v$.firstName.$errors.length }"
+		>
+			<input v-model="person.firstName" type="text" placeholder="Firstname" />
 
 			<small v-for="error of v$.firstName.$errors" :key="error.$uid">
 				{{ error.$message }}
 			</small>
 		</div>
 
-		<div :class="{ error: v$.lastName.$errors.length }">
-			<input v-model="person.lastName" type="text" />
+		<div
+			class="flex flex-col gap-2"
+			:class="{ error: v$.lastName.$errors.length }"
+		>
+			<input v-model="person.lastName" type="text" placeholder="Lastname" />
 
 			<small v-for="error of v$.lastName.$errors" :key="error.$uid">
 				{{ error.$message }}
