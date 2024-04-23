@@ -4,13 +4,11 @@
 
 		<div>
 			<form novalidate @submit.prevent="handleSubmit">
-				<div :class="{ error: v$.firstName.$errors.length }">
-					<input v-model="formData.firstName" type="text" />
-
-					<small v-for="error of v$.firstName.$errors" :key="error.$uid">
-						{{ error.$message }}
-					</small>
-				</div>
+				<Person
+					v-for="(person, i) in formData.people"
+					:key="i"
+					:person="person"
+				/>
 
 				<button type="submit">Submit</button>
 			</form>
@@ -23,10 +21,14 @@ import { reactive } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 
-const formData = reactive({});
+import Person from "@/components/Person.vue";
+
+const formData = reactive({
+	people: [{ firstName: "", lastName: "" }],
+});
 
 const formRules = {
-	firstName: { required },
+	people: { required },
 };
 
 const v$ = useVuelidate(formRules, formData);
