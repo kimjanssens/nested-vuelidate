@@ -1,17 +1,25 @@
 <template>
 	<main class="container mx-auto">
-		<div class="grid grid-cols-2 gap-8">
+		<div class="grid grid-cols-3 gap-8">
 			<pre>{{ formData }}</pre>
 
-			<div class="bg-gray-100 p-8 rounded-lg">
+			<div class="col-span-2 bg-gray-100 p-8 rounded-lg">
 				<form novalidate @submit.prevent="handleSubmit">
 					<Person
 						v-for="(person, i) in formData.people"
 						:key="i"
 						:person="person"
+						@delete="formData.people.splice(i, 1)"
 					/>
 
-					<button type="submit">Submit</button>
+					<button type="button" class="px-4 py-2">Add person</button>
+
+					<button
+						type="submit"
+						class="bg-gray-600 hover:bg-gray-800 text-white px-4 py-2 mt-4 transition-colors ease-in-out duration-300 rounded-md"
+					>
+						Submit
+					</button>
 				</form>
 			</div>
 		</div>

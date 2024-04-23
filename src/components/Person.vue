@@ -21,6 +21,8 @@
 				{{ error.$message }}
 			</small>
 		</div>
+
+		<button type="button" @click="$emit('delete')">Delete</button>
 	</div>
 </template>
 
